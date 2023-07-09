@@ -37,7 +37,10 @@ Parse::Parse(std::string infilename){
   SymbolTable s_table;
   std::ifstream file;
   static std::ofstream output_file;
-  std::string outFilename = infilename + "test2.pout";
+  // std::string outFilename = infilename + "test2.pout";
+  std::size_t lastSlashPos = infilename.find_last_of('/');
+  std::string outFilename = "ParserOutputTest/" + infilename.substr(lastSlashPos + 1) + ".pout";
+  //std::cout << outFilename << std::endl;
   output_file.open (outFilename);
   //if(output_file == nullptr){std::cout << "null";}
   int num_decl = 0;
