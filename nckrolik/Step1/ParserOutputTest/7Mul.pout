@@ -4,4 +4,3 @@ PushI 7
 Mul
 PrintTOS
 Exit
-

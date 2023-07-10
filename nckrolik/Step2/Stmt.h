@@ -6,6 +6,7 @@
 #include "DataMemory.h"
 #include "RunTime.h"
 #include <memory>
+#include <fstream>
 
 class Stmt{
 public:
@@ -13,6 +14,7 @@ public:
   virtual void operation();
   virtual void operation(DataMemory* dm);
   virtual void operation(RunTime* rt);
+  virtual void operation(RunTime* rt, std::ofstream& file);
   virtual void operation(RunTime* rt, DataMemory* dm);
   virtual void operation(DataMemory* dm, int n);
   virtual void operation(RunTime* rt, DataMemory* dm, int n);

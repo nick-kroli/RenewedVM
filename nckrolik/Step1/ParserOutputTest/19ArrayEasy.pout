@@ -6,4 +6,3 @@ PushI 2
 PushArray 0
 PrintTOS
 Exit
-

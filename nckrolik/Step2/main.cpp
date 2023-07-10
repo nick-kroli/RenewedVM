@@ -15,8 +15,14 @@
 int main(int argc, char** argv){
   int pc = 0;
   std::string fName = argv[1];
-
+  static std::ofstream file;
   InstructionMemory imem(fName);
+
+  
+  std::size_t lastSlashPos = fName.find_last_of('/');
+  std::string outFilename = "VMOutputTest/" + fName.substr(lastSlashPos + 1) + ".vout";
+  file.open (outFilename);
+
 
   DataMemory* dm_stack = new DataMemory;
   std::vector<std::shared_ptr<Stmt>> i_mem = imem.getInstructionMemory();
@@ -30,6 +36,8 @@ int main(int argc, char** argv){
   //     i_mem[i]->operation(dm_stack);
   //   }
   // }
+
+  
 
   int end_index = 0;
   //std::cout << i_mem.size();
@@ -120,7 +128,12 @@ int main(int argc, char** argv){
       pc = i_mem[pc]->getOper();
     }
 
-    else if(i_mem[pc]->name_buffer == "pushi" || i_mem[pc]->name_buffer == "add" || i_mem[pc]->name_buffer == "mul" || i_mem[pc]->name_buffer == "dup" || i_mem[pc]->name_buffer == "negate" || i_mem[pc]->name_buffer == "swap" || i_mem[pc]->name_buffer == "pop" || i_mem[pc]->name_buffer == "printtos" || i_mem[pc]->name_buffer == "div") {
+    else if(i_mem[pc]->name_buffer == "printtos"){
+    i_mem[pc]->operation(rt_stack, file);
+    pc++;
+    }
+
+    else if(i_mem[pc]->name_buffer == "pushi" || i_mem[pc]->name_buffer == "add" || i_mem[pc]->name_buffer == "mul" || i_mem[pc]->name_buffer == "dup" || i_mem[pc]->name_buffer == "negate" || i_mem[pc]->name_buffer == "swap" || i_mem[pc]->name_buffer == "pop" || i_mem[pc]->name_buffer == "div") {
       //rt_stack->printEl();
       //std::cout << "done" << std::endl;
       i_mem[pc]->operation(rt_stack);
@@ -143,6 +156,7 @@ int main(int argc, char** argv){
 
     else if(i_mem[pc]->name_buffer == "prints") {
       std::cout << s_buff[i_mem[pc]->getOper()]->name_buffer << std::endl;
+      file << s_buff[i_mem[pc]->getOper()]->name_buffer << std::endl;
       pc++;
     }
 

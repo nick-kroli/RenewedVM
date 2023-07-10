@@ -6,6 +6,6 @@ Exit::Exit(){
 }
 
 void Exit::printOps(std::ofstream& file){
-  file << op_code << "\n";
+  file << op_code;
 }
 

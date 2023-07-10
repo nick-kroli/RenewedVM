@@ -3,4 +3,3 @@ PushI 6
 Negate
 PrintTOS
 Exit
-

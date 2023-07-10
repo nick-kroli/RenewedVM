@@ -12,7 +12,7 @@ int RunTime::getLast( ) {
 }
 
 void RunTime::pushOn(int num) {
-    rt_stack[rt_stack.size() -2] = num;
+    rt_stack[rt_stack.size() - 2] = num;
     rt_stack.pop_back();
 }
 
@@ -23,6 +23,7 @@ void RunTime::addStack(int num) {
 void RunTime::printStack(int num) { 
     rt_stack.pop_back();
     std::cout << num << std::endl;
+    // file << num << std::endl;
 
 }
 
@@ -32,7 +33,8 @@ void RunTime::eraseBack(){
 
 void RunTime::printEl(){
     for(int i = 0; i < rt_stack.size(); i++){
-        std::cout << rt_stack[i];
+        std::cout << rt_stack[i] << std::endl;
+        // file << rt_stack[i] << std::endl;
     }
 }
 

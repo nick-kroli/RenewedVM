@@ -33,25 +33,20 @@
 
 Parse::Parse(std::string infilename){
 
+  //DECLARE OBJECTS
   Instruction i_buf;
   SymbolTable s_table;
   std::ifstream file;
   static std::ofstream output_file;
-  // std::string outFilename = infilename + "test2.pout";
-  std::size_t lastSlashPos = infilename.find_last_of('/');
-  std::string outFilename = "ParserOutputTest/" + infilename.substr(lastSlashPos + 1) + ".pout";
-  //std::cout << outFilename << std::endl;
-  output_file.open (outFilename);
-  //if(output_file == nullptr){std::cout << "null";}
+  std::vector<std::string> subroute_vec;
+  std::vector<std::string> new_level;
+  std::vector<std::string> vec_of_strings;
+  
+  //DECLARE SIMPLE VARIABLES
   int num_decl = 0;
   int buf_idx = 0;
   int control_var = 0;
-  std::vector<std::string> subroute_vec;
   int label_loc;
-  std::vector<std::string> new_level;
-  file.open(infilename);
-  std::string line;
-  std::vector<std::string> vec_of_strings;
   int num_lines = 0; 
   int mem_loc = 0;
   int end_check = 0;
@@ -61,11 +56,24 @@ Parse::Parse(std::string infilename){
   int scalDecl = 0;
   int arrDecl = 0;
   int lblDecl = 0;
+  std::string line;
+
+  //OPEN INPUT FILE, CREATE OUTPUT FILE
+  file.open(infilename);
+  std::size_t lastSlashPos = infilename.find_last_of('/');
+  std::string outFilename = "ParserOutputTest/" + infilename.substr(lastSlashPos + 1) + ".pout";
+  output_file.open (outFilename);
+
+  //ITERATE THROUGH INPUT FILE LINES, GET NUMBER OF LINES
   while(getline(file,line)){
     vec_of_strings.push_back(line);
+
+    //CHECK FOR END STATEMENT
     if (line == "end"){
       end_check++;
     }
+
+    //CHECK FOR GOSUBLABELS OR JUMPS
     if (line.substr(0,10) == "gosublabel" || line.substr(0,4) == "jump"){
       sub_check++;
     }
@@ -77,30 +85,30 @@ Parse::Parse(std::string infilename){
     num_lines++;   
   }
   file.close();
+
+  //EXIT WITH FAILURE AND RAISE ERROR IF NO END STATEMENT EXISTS AT END
   if (end_check != 1){
     output_file << "error: no end statement in program \n";
     output_file.close();
     exit(EXIT_FAILURE);
   }
-
-  std::string should_bestart = vec_of_strings[0];
-  std::string should_beend = vec_of_strings.back();
-  if(should_bestart.substr(0,5) != "start"){
-    output_file <<"failure \n";
+  //EXIT WITH FAILURE IF FIRST STATEMENT ISNT START
+  if(vec_of_strings[0].substr(0,5) != "start"){
+    output_file << "failure \n";
     output_file.close();
     exit(EXIT_FAILURE);
   }
+
+  //ADD START STATEMENT TO INSTRUCTION BUFFER
   else{
     std::shared_ptr<Stmt> my_pt(new Start);
-    //my_pt->printOps();
     i_buf.addToBuffer(my_pt);
   }
 
-
+  //ITERATE THE NUMBER OF LINES TIMES
   for(int i = 0; i < num_lines; i++){
     std::string inst = vec_of_strings[i];
-    int inst_len = inst.length();
-
+    //int inst_len = inst.length();
     if(inst.substr(0,8) == "declscal"){
       scalDecl++;
       char var = inst[9];
@@ -108,7 +116,6 @@ Parse::Parse(std::string infilename){
       num_decl++;
       if(s_table.getSymbolTable().empty()){
         mem_loc = 0;
-        
       }
       if(control_var == 1){
         subroute_vec.push_back(var2);
@@ -131,7 +138,6 @@ Parse::Parse(std::string infilename){
     }
 
     else if(inst.substr(0,7) == "declarr"){
-      //DeclArr darr;
       arrDecl++;
       char var = inst[8];
       std::string var2(1,var);
@@ -358,11 +364,12 @@ Parse::Parse(std::string infilename){
     }
   }
 
-  if(should_beend.substr(0,3) != "end"){
+  if(vec_of_strings.back().substr(0,3) != "end"){
     output_file <<"error: code encountered after an end statement\n";
     output_file.close();
     exit(EXIT_FAILURE);
   }
+
   else{
     std::shared_ptr<Stmt> my_ptr(new End());
     i_buf.addToBuffer(my_ptr);
