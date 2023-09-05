@@ -11,3 +11,7 @@ Printi::Printi(std::string print_this){
 void Printi::printOps(std::ofstream& file){
   file << to_be_printed << "\n";
 }
+
+void Printi::printBin(std::ofstream& file){
+  std::cout << op_code << " " << OP << "\n";  
+}

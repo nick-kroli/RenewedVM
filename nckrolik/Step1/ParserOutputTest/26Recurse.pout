@@ -1,4 +1,3 @@
-in_FIB
 Start 0
 PushI 3
 GoSub 5

@@ -7,5 +7,6 @@ class Label : public Stmt{
 public:
   Label();
   void printOps(std::ofstream& file);
+  void printBin(std::ofstream& file);
 };
 #endif 

@@ -7,6 +7,7 @@ class GoSub : public Stmt{
 public:
   GoSub(std::string _name);
   void printOps(std::ofstream& file);
+  void printBin(std::ofstream& file);
   void setLabelName(std::string name);
   virtual void setLabelNum(int num); 
   std::string getLabelName(); 

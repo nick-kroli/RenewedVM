@@ -3,6 +3,7 @@
 
 Prints::Prints(std::string print_this, int print_count){
   op_code = "Prints";
+  OP = 0x00000060;
   to_be_printed = print_this;
   print_num = print_count;
 }
@@ -10,6 +11,11 @@ Prints::Prints(std::string print_this, int print_count){
 
 
 void Prints::printOps(std::ofstream& file){
-  //std::cout << op_code << " " << to_be_printed << std::endl;
   file << op_code << " " << print_num << "\n";
+}
+
+void Prints::printBin(std::ofstream& file){
+  file.write((char*)&OP, sizeof(int));
+  file.write((char*)&print_num, sizeof(int));
+  std::cout << op_code << " "<< print_num << " "<< std::hex << OP << "\n";  
 }

@@ -7,5 +7,6 @@ class Return : public Stmt{
 public:
   Return();
   void printOps(std::ofstream& file);
+  void printBin(std::ofstream& file);
 };
 #endif 

@@ -7,5 +7,6 @@ class Add : public Stmt{
 public:
   Add();
   void printOps(std::ofstream& file);
+  void printBin(std::ofstream& file);
 };
 #endif 

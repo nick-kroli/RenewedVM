@@ -7,5 +7,6 @@ class Mul : public Stmt{
 public:
   Mul();
   void printOps(std::ofstream& file);
+  void printBin(std::ofstream& file);
 };
 #endif 

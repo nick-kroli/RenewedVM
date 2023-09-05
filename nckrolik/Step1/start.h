@@ -7,6 +7,7 @@ class Start : public Stmt{
 public:
   Start();
   void printOps(std::ofstream& file);
+  void printBin(std::ofstream& file);
   virtual void setNumDecl(int _num);
 private:
 int num_decl = 0;

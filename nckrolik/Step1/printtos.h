@@ -7,5 +7,6 @@ class PrintTos : public Stmt{
 public:
   PrintTos();
   void printOps(std::ofstream& file);
+  void printBin(std::ofstream& file);
 };
 #endif 

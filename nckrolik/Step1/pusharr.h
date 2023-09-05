@@ -5,8 +5,9 @@
 
 class PushArr : public Stmt{
 public:
-  PushArr(std::string _var,int _loc);
+  PushArr(std::string _var, int _loc);
   void printOps(std::ofstream& file);
+  void printBin(std::ofstream& file);
 private:
   std::string var;
   int loc;

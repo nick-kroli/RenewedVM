@@ -2,8 +2,6 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
-#include "declarr.h"
-#include "declscal.h"
 #include "label.h"
 #include "gosublabel.h"
 #include "exit.h"
@@ -30,14 +28,18 @@
 #include "start.h"
 #include "end.h"
 #include <memory> 
+#include "StringBuffer.h"
 
 Parse::Parse(std::string infilename){
 
   //DECLARE OBJECTS
   Instruction i_buf;
   SymbolTable s_table;
+  StringBuffer s_buff;
+  
   std::ifstream file;
   static std::ofstream output_file;
+  static std::ofstream binary_output_file;
   std::vector<std::string> subroute_vec;
   std::vector<std::string> new_level;
   std::vector<std::string> vec_of_strings;
@@ -62,8 +64,11 @@ Parse::Parse(std::string infilename){
   file.open(infilename);
   std::size_t lastSlashPos = infilename.find_last_of('/');
   std::string outFilename = "ParserOutputTest/" + infilename.substr(lastSlashPos + 1) + ".pout";
-  output_file.open (outFilename);
+  output_file.open(outFilename);
+  std::string outBinaryFile = "ParserOutputTest/" + infilename.substr(lastSlashPos + 1) + ".bin";
+  binary_output_file.open(outBinaryFile);
 
+  std::cout << "info for file " << infilename << "\n\n";
   //ITERATE THROUGH INPUT FILE LINES, GET NUMBER OF LINES
   while(getline(file,line)){
     vec_of_strings.push_back(line);
@@ -79,8 +84,10 @@ Parse::Parse(std::string infilename){
     }
     if (line.substr(0,6) == "prints"){
       std::string print_this = line.substr(7);
-      std::shared_ptr<Stmt> my_ptr(new Printi(print_this));
-      my_ptr->printOps(output_file);
+      s_buff.insertString(print_this);
+      // std::shared_ptr<Stmt> my_ptr(new Printi(print_this));
+      // s_buff.printBuffer();
+      // std::cout << print_this << std::endl;
     }
     num_lines++;   
   }
@@ -108,7 +115,6 @@ Parse::Parse(std::string infilename){
   //ITERATE THE NUMBER OF LINES TIMES
   for(int i = 0; i < num_lines; i++){
     std::string inst = vec_of_strings[i];
-    //int inst_len = inst.length();
     if(inst.substr(0,8) == "declscal"){
       scalDecl++;
       char var = inst[9];
@@ -376,6 +382,11 @@ Parse::Parse(std::string infilename){
   }
 
  i_buf.getBufElement(0)->setNumDecl(num_decl);
- i_buf.printCurrentBuf(s_table, output_file);
+ s_buff.printBuffer();
+ s_buff.serialize(binary_output_file);
+ i_buf.printCurrentBuf(s_table, output_file, binary_output_file);
+ 
+
+
  output_file.close();
 }

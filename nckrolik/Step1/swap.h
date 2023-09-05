@@ -7,5 +7,6 @@ class Swap : public Stmt{
 public:
   Swap();
   void printOps(std::ofstream& file);
+  void printBin(std::ofstream& file);
 };
 #endif 

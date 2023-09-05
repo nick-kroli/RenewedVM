@@ -9,6 +9,8 @@ output_dir="VMOutputTest"
 # Executable file
 executable="./vm"
 
+rm -f "$output_dir"/*
+
 # Iterate over each file in the input directory
 for file in "$input_dir"/*; do
     # Check if the file is a regular file

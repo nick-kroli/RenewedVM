@@ -10,7 +10,7 @@ class Instruction{
 public:
   Instruction();
   std::vector<std::shared_ptr<Stmt>> getBuffer();
-  void printCurrentBuf(SymbolTable s_table, std::ofstream& file);
+  void printCurrentBuf(SymbolTable s_table, std::ofstream& file, std::ofstream& bin_file);
   void addToBuffer(std::shared_ptr<Stmt> stmt);
   std::shared_ptr<Stmt> getBufElement(int element);
 private:

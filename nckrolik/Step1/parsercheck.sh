@@ -9,6 +9,9 @@ output_dir="ParserOutputTest"
 # Executable file
 executable="./parser"
 
+# Clear the output directory before processing
+rm -f "$output_dir"/*
+
 # Iterate over each file in the input directory
 for file in "$input_dir"/*; do
     # Check if the file is a regular file
@@ -21,10 +24,11 @@ for file in "$input_dir"/*; do
         output_file="$output_dir/$filename.pout"
         
         # Run the executable with the current file as input and redirect the output to the output file
-        "$executable" "$file" > "$output_file"
+        "$executable" "$file"
         
         # echo "Processed: $file"
         # echo "Output file: $output_file"
         # echo "---------------------------"
     fi
 done
+

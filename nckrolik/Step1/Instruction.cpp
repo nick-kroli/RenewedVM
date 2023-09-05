@@ -2,7 +2,8 @@
 #include "Instruction.h"
 #include <vector>
 #include <memory>
-#include "declscal.h"
+
+
 
 Instruction::Instruction(){
 
@@ -13,7 +14,7 @@ void Instruction::addToBuffer(std::shared_ptr<Stmt> stmt_ptr){
   
 }
 
-void Instruction::printCurrentBuf(SymbolTable s_table, std::ofstream& file){
+void Instruction::printCurrentBuf(SymbolTable s_table, std::ofstream& file, std::ofstream& bin_file){
   std::map<std::string, std::vector<std::pair<int,int>>> actual_table = s_table.getSymbolTable();
   for(int k = 0; k < i_buffer.size(); k++){
     if(i_buffer[k]->op_code == "JumpNZero, "){
@@ -67,8 +68,10 @@ void Instruction::printCurrentBuf(SymbolTable s_table, std::ofstream& file){
     }
   }
   for(int i = 0; i < i_buffer.size(); i++){
+      std::cout << std::endl;
       i_buffer[i]->printOps(file);
-    }
+      i_buffer[i]->printBin(bin_file);
+  }
 }
 
 std::vector<std::shared_ptr<Stmt>> Instruction::getBuffer(){

@@ -1,7 +1,3 @@
-this_should_print_1
-this_should_not_print_1
-this_should_not_print_2
-this_should_print_2
 Start 0
 PushI 1
 Dup

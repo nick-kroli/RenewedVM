@@ -12,3 +12,4 @@ std::string Stmt::getLabelName(){
 void Stmt::setNumDecl(int _num){
   return;
 }
+

@@ -8,3 +8,7 @@ End::End(){
 void End::printOps(std::ofstream& file){
   file << op_code << "\n";
 }
+
+void End::printBin(std::ofstream& file){
+  // std::cout << op_code << " " << std::hex << OP << "\n";  
+}

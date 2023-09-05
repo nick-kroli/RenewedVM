@@ -1,4 +1,3 @@
-exit_pgm
 Start 1
 PushI 4
 GoSub 4

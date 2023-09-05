@@ -7,5 +7,6 @@ class Dup : public Stmt{
 public:
   Dup();
   void printOps(std::ofstream& file);
+  void printBin(std::ofstream& file);
 };
 #endif 

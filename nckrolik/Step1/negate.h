@@ -7,5 +7,6 @@ class Negate : public Stmt{
 public:
   Negate();
   void printOps(std::ofstream& file);
+  void printBin(std::ofstream& file);
 };
 #endif 

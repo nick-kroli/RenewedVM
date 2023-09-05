@@ -7,6 +7,7 @@ class Printi : public Stmt{
 public:
   Printi(std::string print_this);
   void printOps(std::ofstream& file);
+  void printBin(std::ofstream& file);
 private:
   std::string to_be_printed;
 };

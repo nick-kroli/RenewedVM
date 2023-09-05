@@ -20,7 +20,8 @@ int main(int argc, char** argv){
 
   
   std::size_t lastSlashPos = fName.find_last_of('/');
-  std::string outFilename = "VMOutputTest/" + fName.substr(lastSlashPos + 1) + ".vout";
+  std::size_t firstDotPos = fName.find_last_of('.');
+  std::string outFilename = "VMOutputTest/" + fName.substr(lastSlashPos + 1,firstDotPos + 1) + ".vout";
   file.open (outFilename);
 
 
