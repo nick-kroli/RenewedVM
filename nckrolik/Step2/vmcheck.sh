@@ -23,7 +23,7 @@ for file in "$input_dir"/*; do
         output_file="$output_dir/$filename.pout.vout"
         
         # Run the executable with the current file as input and redirect the output to the output file
-        "$executable" "$file" > "$output_file"
+        "$executable" "$file"
         
         # echo "Processed: $file"
         # echo "Output file: $output_file"

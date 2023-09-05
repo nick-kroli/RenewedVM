@@ -13,7 +13,6 @@ public:
   int getLocVal(int num);
 
 private:
-  //std::vector<int> dm_stack;  
   std::vector<std::vector<int>> dm_stack;
 };
 

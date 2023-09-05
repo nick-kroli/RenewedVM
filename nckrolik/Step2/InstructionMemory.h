@@ -5,7 +5,7 @@
 
 class InstructionMemory{
 public:
-  InstructionMemory(std::string fName);
+  InstructionMemory(std::string fName, std::string binName);
   std::vector<std::shared_ptr<Stmt>> getInstructionMemory();
   std::vector<std::shared_ptr<Stmt>> getStringBuffer();
   void printIMem();
@@ -13,4 +13,5 @@ public:
 private:
   std::vector<std::shared_ptr<Stmt>> i_buffer;
   std::vector<std::shared_ptr<Stmt>> s_buff;
+  std::vector<std::string> str_buff;
 };

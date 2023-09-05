@@ -25,12 +25,22 @@
 #include "Op_add.h"
 #include "Words.h"
 
-InstructionMemory::InstructionMemory(std::string fName){
+InstructionMemory::InstructionMemory(std::string fName, std::string binName){
   std::ifstream file;
+  std::ifstream binFile;
 
   file.open(fName);
+  binFile.open(binName, std::ios::binary);
+  
+
   std::string line;
   std::vector<std::string> vec_of_strings;
+
+  //dump string buffer
+  int num_strings = 0;
+  binFile.read((char*)&num_strings, sizeof(int));
+  std::cout << "NUM STRINGS: " << num_strings << std::endl;
+
   int num_lines = 0;
 
   while(getline(file,line)){
@@ -40,10 +50,6 @@ InstructionMemory::InstructionMemory(std::string fName){
 
   for(int i = 0; i < num_lines; i++){
     std::string inst = vec_of_strings[i];
-   
-
-
-
     if(inst.substr(0,9) == "JumpNZero"){
       int opnd = stoi(inst.substr(10));
       std::shared_ptr<Stmt> my_ptr(new Op_jumpnzero(opnd));
@@ -160,7 +166,6 @@ InstructionMemory::InstructionMemory(std::string fName){
     else if(inst.substr(0,5) == "Start") {
       int opnd = stoi(inst.substr(6));
       std::shared_ptr<Stmt> my_ptr(new Op_start_prog(opnd));
-      //std::cout << "PUSHES BACK START" << std::endl;
       i_buffer.push_back(my_ptr);
     }
 
@@ -168,9 +173,6 @@ InstructionMemory::InstructionMemory(std::string fName){
       std::shared_ptr<Stmt> my_ptr(new Op_exit());
       i_buffer.push_back(my_ptr);
     }
-
-    
-
     else{
       std::shared_ptr<Stmt> my_ptr(new Words(inst));
       s_buff.push_back(my_ptr);
@@ -185,9 +187,6 @@ std::vector<std::shared_ptr<Stmt>> InstructionMemory::getInstructionMemory(){
 std::vector<std::shared_ptr<Stmt>> InstructionMemory::getStringBuffer(){
   return s_buff;
 }
-
-
-
 void InstructionMemory::printIMem(){
   for(int i = 0; i < i_buffer.size(); i++){
     std::shared_ptr<Stmt> cur_op = i_buffer[i];

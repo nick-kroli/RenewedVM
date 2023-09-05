@@ -65,7 +65,7 @@ Parse::Parse(std::string infilename){
   std::size_t lastSlashPos = infilename.find_last_of('/');
   std::string outFilename = "ParserOutputTest/" + infilename.substr(lastSlashPos + 1) + ".pout";
   output_file.open(outFilename);
-  std::string outBinaryFile = "ParserOutputTest/" + infilename.substr(lastSlashPos + 1) + ".bin";
+  std::string outBinaryFile = "ParserBinaryOut/" + infilename.substr(lastSlashPos + 1) + ".bin";
   binary_output_file.open(outBinaryFile);
 
   std::cout << "info for file " << infilename << "\n\n";
