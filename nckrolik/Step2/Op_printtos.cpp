@@ -10,7 +10,7 @@ void Op_printtos::operation(RunTime* rt, std::ofstream& file) {
   // rt->printEl();
   // std::cout << "end" << std::endl;
   int val =  rt->getLast();
-  std::cout << val << std::endl;
+  //std::cout << val << std::endl;
   file << std::to_string(val) << "\n";
   rt->eraseBack( );
 }

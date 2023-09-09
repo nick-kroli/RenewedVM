@@ -9,26 +9,31 @@
 #include "RunTime.h"
 
 int main(int argc, char** argv){
+  
   int pc = 0;
   std::string fName = argv[1];
   std::string binName = argv[2];
   static std::ofstream file;
+  static std::ofstream binOut;
+  // std::cout << fName << " " << binName << std::endl;
   InstructionMemory imem(fName, binName);
-
+  
   
   std::size_t lastSlashPos = fName.find_last_of('/');
   std::size_t firstDotPos = fName.find_last_of('.');
   std::string outFilename = "VMOutputTest/" + fName.substr(lastSlashPos + 1,firstDotPos + 1) + ".vout";
-  file.open (outFilename);
-
+  std::string outBinary = "VMBinaryOut/" + fName.substr(lastSlashPos + 1,firstDotPos + 1) + ".vout";
+  file.open(outFilename);
+  binOut.open(outBinary);
+  
   DataMemory* dm_stack = new DataMemory;
   std::vector<std::shared_ptr<Stmt>> i_mem = imem.getInstructionMemory();
   std::vector<std::shared_ptr<Stmt>> s_buff = imem.getStringBuffer();
-
+  std::vector<std::string> str_buff = imem.getStrings();
   RunTime* rt_stack = new RunTime; 
   std::vector<int> return_add; 
   int end_index = 0;
-
+  
   for(int i = 0; i < i_mem.size(); i++){
     if(i_mem[i]->name_buffer == "exit"){
       end_index = i;
@@ -36,7 +41,7 @@ int main(int argc, char** argv){
   }
   
   int sub_route_vars = 0;
-
+  
   while(pc != end_index){
 
     if(i_mem[pc]->name_buffer == "start program"){
@@ -89,8 +94,10 @@ int main(int argc, char** argv){
     }
 
     else if(i_mem[pc]->name_buffer == "printtos"){
-    i_mem[pc]->operation(rt_stack, file);
-    pc++;
+      //i_mem[pc]->operation(rt_stack, file);
+      i_mem[pc]->operation(rt_stack, binOut);
+
+      pc++;
     }
 
     else if(i_mem[pc]->name_buffer == "pushi" || i_mem[pc]->name_buffer == "add" || i_mem[pc]->name_buffer == "mul" || i_mem[pc]->name_buffer == "dup" || i_mem[pc]->name_buffer == "negate" || i_mem[pc]->name_buffer == "swap" || i_mem[pc]->name_buffer == "pop" || i_mem[pc]->name_buffer == "div") {
@@ -109,9 +116,14 @@ int main(int argc, char** argv){
     }
 
     else if(i_mem[pc]->name_buffer == "prints") {
-      std::cout << s_buff[i_mem[pc]->getOper()]->name_buffer << std::endl;
-      file << s_buff[i_mem[pc]->getOper()]->name_buffer << std::endl;
+      // std::cout << "GETS HERE1 " << i_mem[pc]->getOper() << std::endl;
+      // std::cout << str_buff[i_mem[pc]->getOper()] << std::endl;
+      // std::cout << "GETS HERE2";
+      //file << s_buff[i_mem[pc]->getOper()]->name_buffer << std::endl;
+      binOut << str_buff[i_mem[pc]->getOper()] << std::endl;
+      // std::cout << "GETS HERE3";
       pc++;
     }
   }
+  
 }
