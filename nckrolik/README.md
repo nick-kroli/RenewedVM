@@ -2,6 +2,9 @@
 
 ## Overview
 
+With the rapid evolution of technology, virtual machines have evolved into pivotal tools with a wide range of applications. This project introduces a robust C++ Virtual Machine designed to execute assembly language programs for a simulated artificial machine. The virtual machine is composed of two essential steps, each playing a crucial role in its functionality.
+
+
 ## Makefile
 
 The first step, activated by running make step1, involves compiling a set of C++ files in the Step1 directory. This creates an executable named parser. Following compilation, the program processes input files located in the ParserInputTest directory. The Makefile then transfers the generated binary output to the Step2/VMBinaryInput directory to be used as the input for the Virtual Machine
