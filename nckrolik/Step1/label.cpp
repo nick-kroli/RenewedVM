@@ -10,7 +10,7 @@ void Label::printOps(std::ofstream& file){
 }
 
 void Label::printBin(std::ofstream& file){
-  std::cout << op_code << " " << std::hex << OP << "\n";  
+  // std::cout << op_code << " " << std::hex << OP << "\n";  
 }
 
 

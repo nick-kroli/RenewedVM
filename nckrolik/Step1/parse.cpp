@@ -68,7 +68,6 @@ Parse::Parse(std::string infilename){
   std::string outBinaryFile = "ParserBinaryOut/" + infilename.substr(lastSlashPos + 1) + ".bin";
   binary_output_file.open(outBinaryFile);
 
-  std::cout << "info for file " << infilename << "\n\n";
   //ITERATE THROUGH INPUT FILE LINES, GET NUMBER OF LINES
   while(getline(file,line)){
     vec_of_strings.push_back(line);
@@ -85,9 +84,6 @@ Parse::Parse(std::string infilename){
     if (line.substr(0,6) == "prints"){
       std::string print_this = line.substr(7);
       s_buff.insertString(print_this);
-      // std::shared_ptr<Stmt> my_ptr(new Printi(print_this));
-      // s_buff.printBuffer();
-      // std::cout << print_this << std::endl;
     }
     num_lines++;   
   }
@@ -137,9 +133,7 @@ Parse::Parse(std::string infilename){
           }
       }
       int len = 1;
-      
       s_table.addTableEntry(var2,mem_loc,len);
-      
       mem_loc++;
     }
 
@@ -382,11 +376,9 @@ Parse::Parse(std::string infilename){
   }
 
  i_buf.getBufElement(0)->setNumDecl(num_decl);
- s_buff.printBuffer();
+ //s_buff.printBuffer();
  s_buff.serialize(binary_output_file);
  i_buf.printCurrentBuf(s_table, output_file, binary_output_file);
- 
-
-
  output_file.close();
+
 }

@@ -15,7 +15,7 @@ executable="./parser"
 
 # Clear the output directory before processing
 rm -f "$output_dir"/*
-rm -f "$binary_out_dir"/*
+rm -f "$binary_output_dir"/*
 
 # Iterate over each file in the input directory
 for file in "$input_dir"/*; do

@@ -12,5 +12,5 @@ void Dup::printOps(std::ofstream& file){
 
 void Dup::printBin(std::ofstream& file){
   file.write((char*)&OP, sizeof(int));
-  std::cout << op_code << " " << std::hex << OP << "\n";  
+  // std::cout << op_code << " " << std::hex << OP << "\n";  
 }

@@ -5,7 +5,7 @@
 
 class InstructionMemory{
 public:
-  InstructionMemory(std::string fName, std::string binName);
+  InstructionMemory(std::string binName);
   std::vector<std::shared_ptr<Stmt>> getInstructionMemory();
   std::vector<std::shared_ptr<Stmt>> getStringBuffer();
   std::vector<std::string> getStrings();

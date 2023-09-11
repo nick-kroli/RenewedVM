@@ -13,5 +13,5 @@ void Return::printOps(std::ofstream& file){
 
 void Return::printBin(std::ofstream& file){
   file.write((char*)&OP, sizeof(int));
-  std::cout << op_code << " " << OP << "\n";  
+  // std::cout << op_code << " " << OP << "\n";  
 }

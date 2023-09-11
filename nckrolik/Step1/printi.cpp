@@ -13,5 +13,5 @@ void Printi::printOps(std::ofstream& file){
 }
 
 void Printi::printBin(std::ofstream& file){
-  std::cout << op_code << " " << OP << "\n";  
+  // std::cout << op_code << " " << OP << "\n";  
 }

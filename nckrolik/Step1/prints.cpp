@@ -17,5 +17,5 @@ void Prints::printOps(std::ofstream& file){
 void Prints::printBin(std::ofstream& file){
   file.write((char*)&OP, sizeof(int));
   file.write((char*)&print_num, sizeof(int));
-  std::cout << op_code << " "<< print_num << " "<< std::hex << OP << "\n";  
+  // std::cout << op_code << " "<< print_num << " "<< std::hex << OP << "\n";  
 }

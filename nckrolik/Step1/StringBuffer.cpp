@@ -13,8 +13,6 @@ void StringBuffer::serialize(std::ofstream& file){
     file.write((char*)(&str_len), sizeof(int));
     file.write(buffer[i].c_str(), sizeof(char)*str_len);
   }
-
-  
 }
 
 
@@ -24,7 +22,7 @@ std::vector<std::string> StringBuffer::getBuffer(){
 
 void StringBuffer::printBuffer(){
   for(int i = 0; i < buffer.size(); i++){
-    std::cout << buffer[i] << std::endl;
+    //std::cout << buffer[i] << std::endl;
   }
   // std::cout << buffer.back();
 }

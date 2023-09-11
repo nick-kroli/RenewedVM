@@ -25,7 +25,7 @@
 #include "Op_add.h"
 #include "Words.h"
 
-InstructionMemory::InstructionMemory(std::string fName, std::string binName){
+InstructionMemory::InstructionMemory(std::string binName){
   // std::cout << "gets here";
   static const int OP_JUMP = 0x00000010;
   static const int OP_JUMPZERO = 0x00000011;
@@ -54,7 +54,7 @@ InstructionMemory::InstructionMemory(std::string fName, std::string binName){
   std::ifstream file;
   std::ifstream binFile;
   char byte;
-  file.open(fName);
+  // file.open(fName);
   binFile.open(binName, std::ios::binary);
   
 

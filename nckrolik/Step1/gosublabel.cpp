@@ -14,7 +14,7 @@ void GoSubLabel::printOps(std::ofstream& file){
 void GoSubLabel::printBin(std::ofstream& file){
   file.write((char*)&OP, sizeof(int));
   file.write((char*)&label_numloc, sizeof(int));
-  std::cout << op_code << label_numloc <<  " " << std::hex << OP << "\n";  
+  // std::cout << op_code << label_numloc <<  " " << std::hex << OP << "\n";  
 }
 
 void GoSubLabel::setLabelNum(int num){

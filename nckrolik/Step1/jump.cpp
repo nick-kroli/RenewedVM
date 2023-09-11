@@ -14,7 +14,7 @@ void Jump::printOps(std::ofstream& file){
 void Jump::printBin(std::ofstream& file){
   file.write((char*)&OP, sizeof(int));
   file.write((char*)&label_numloc, sizeof(int));
-  std::cout << "Jump " << label_numloc << " " <<std::hex << OP << "\n";   
+  // std::cout << "Jump " << label_numloc << " " <<std::hex << OP << "\n";   
 }
 
 void Jump::setLabelName(std::string _label){

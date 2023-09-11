@@ -1,5 +1,0 @@
-Start 0
-PushI 6
-Negate 
-PrintTOS 
-Exit

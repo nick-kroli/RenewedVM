@@ -1,6 +1,0 @@
-Start 0
-PushI 6
-Dup
-PrintTOS 
-PrintTOS 
-Exit

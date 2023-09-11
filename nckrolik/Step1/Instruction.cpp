@@ -68,7 +68,7 @@ void Instruction::printCurrentBuf(SymbolTable s_table, std::ofstream& file, std:
     }
   }
   for(int i = 0; i < i_buffer.size(); i++){
-      std::cout << std::endl;
+      //std::cout << std::endl;
       i_buffer[i]->printOps(file);
       i_buffer[i]->printBin(bin_file);
   }

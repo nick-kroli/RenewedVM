@@ -13,7 +13,7 @@ void Start::printOps(std::ofstream& file){
 void Start::printBin(std::ofstream& file){
   file.write((char*) &OP, sizeof(int));
   file.write((char*) &num_decl, sizeof(int));
-  std::cout << op_code << " " << num_decl << " " << std::hex << OP << "\n";  
+  // std::cout << op_code << " " << num_decl << " " << std::hex << OP << "\n";  
 }
 
 void Start::setNumDecl(int _num_decl){

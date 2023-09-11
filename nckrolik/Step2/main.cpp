@@ -11,19 +11,19 @@
 int main(int argc, char** argv){
   
   int pc = 0;
-  std::string fName = argv[1];
-  std::string binName = argv[2];
+  // std::string fName = argv[1];
+  std::string binName = argv[1];
   static std::ofstream file;
   static std::ofstream binOut;
   // std::cout << fName << " " << binName << std::endl;
-  InstructionMemory imem(fName, binName);
+  InstructionMemory imem(binName);
   
   
-  std::size_t lastSlashPos = fName.find_last_of('/');
-  std::size_t firstDotPos = fName.find_last_of('.');
-  std::string outFilename = "VMOutputTest/" + fName.substr(lastSlashPos + 1,firstDotPos + 1) + ".vout";
-  std::string outBinary = "VMBinaryOut/" + fName.substr(lastSlashPos + 1,firstDotPos + 1) + ".vout";
-  file.open(outFilename);
+  std::size_t lastSlashPos = binName.find_last_of('/');
+  std::size_t firstDotPos = binName.find_last_of('.');
+  std::string outFilename = "VMOutputTest/" + binName.substr(lastSlashPos + 1,firstDotPos + 1) + ".vout";
+  std::string outBinary = "VMBinaryOut/" + binName.substr(lastSlashPos + 1,firstDotPos + 1) + ".vout";
+  // file.open(outFilename);
   binOut.open(outBinary);
   
   DataMemory* dm_stack = new DataMemory;

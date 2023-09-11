@@ -15,6 +15,6 @@ void PushI::printOps(std::ofstream& file){
 void PushI::printBin(std::ofstream& file){
   file.write((char*)&OP, sizeof(int));
   file.write((char*)&operand, sizeof(int));
-  std::cout << op_code << " " << operand << " " <<std::hex << OP << "\n";  
+  // std::cout << op_code << " " << operand << " " <<std::hex << OP << "\n";  
 }
 

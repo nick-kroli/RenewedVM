@@ -15,5 +15,5 @@ void PopArr::printOps(std::ofstream& file){
 void PopArr::printBin(std::ofstream& file){
   file.write((char*)&OP, sizeof(int));
   file.write((char*)&loc, sizeof(int));
-  std::cout << op_code << loc << " " << std::hex << OP << "\n";  
+  // std::cout << op_code << loc << " " << std::hex << OP << "\n";  
 }

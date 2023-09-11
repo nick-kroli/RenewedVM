@@ -14,7 +14,7 @@ void JumpZero::printOps(std::ofstream& file){
 void JumpZero::printBin(std::ofstream& file){
   file.write((char*)&OP, sizeof(int));
   file.write((char*)&label_numloc, sizeof(int));
-  std::cout << "JumpZero " << label_numloc << " " << std::hex << OP << "\n";  
+  // std::cout << "JumpZero " << label_numloc << " " << std::hex << OP << "\n";  
 }
 
 void JumpZero::setLabelName(std::string _label){
