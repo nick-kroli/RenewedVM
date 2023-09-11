@@ -13,5 +13,7 @@ step2: step1
 	cd ./Step2 && for file in ./VMBinaryInput/*; do ./vm $$file; done
 clean:
 	@echo "cleaning..."
-
+	rm -rf ./Step1/ParserBinaryOut/*
+	rm -rf ./Step2/VMBinaryInput/*
+	rm -rf ./Step2/VMBinaryOut/*
 

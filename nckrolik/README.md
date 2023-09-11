@@ -7,9 +7,9 @@ With the rapid evolution of technology, virtual machines have evolved into pivot
 
 ## Makefile
 
-The first step, activated by running make step1, involves compiling a set of C++ files in the Step1 directory. This creates an executable named parser. Following compilation, the program processes input files located in the ParserInputTest directory. The Makefile then transfers the generated binary output to the Step2/VMBinaryInput directory to be used as the input for the Virtual Machine
+The first step, activated by running make step1, involves compiling a set of C++ files in the Step1 directory. This creates an executable named parser. Following compilation, the program processes input files located in the ParserInputTest directory. The Makefile then transfers the generated binary output to the Step2/VMBinaryInput directory to be used as the input for the Virtual Machine.
 
-The second step, initiated by running make step2, builds upon the results of the first step, as it depends on its successful completion. Similar to the first step, this process entails the compilation of C++ files, this time in the Step2 directory. The outcome is an executable named vm. Subsequently, this program is employed to process binary input files located in the VMBinaryInput directory.
+The second step, initiated by running make step2, builds upon the results of the first step, as it depends on its successful completion. Similar to the first step, this process entails the compilation of C++ files, this time in the Step2 directory. The outcome is an executable named vm. Afterwards, the program processes binary input files located in the VMBinaryInput directory.
 
 ## Step 1 - Parser
 
@@ -17,7 +17,7 @@ The first step involves parsing a simple assembly language program for an artifi
 
 ## Step 2 - Virtual Machine
 
-The `.bin` file is opened for reading. First, the strings in the string buffer are read and added to the string buffer. Then, instructions are read, and objects are created to represent them. These instruction objects are derived from an abstract `Stmt` object. Once the instruction buffer is created, the program counter (pc) is set to the address of the first instruction in the buffer (which should be 0), and the instruction pointed to by the pc is executed until an exit instruction is encountered, terminating the program.
+The `.bin` file is opened for reading. First, the strings in the string buffer are read and added to the string buffer. Then, instructions are read, and objects are created to represent them. These instruction objects are derived from an abstract `Stmt` object. Once the instruction buffer is created, the program counter is set to the address of the first instruction in the buffer, and the instruction pointed to by the pc is executed until an exit instruction is encountered, terminating the program.
 
 ### Data Structures Used by Virtual Machine:
 ---
