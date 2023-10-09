@@ -2,7 +2,7 @@
 
 ## Overview
 
-With the rapid evolution of technology, virtual machines have evolved into pivotal tools with a wide range of applications. This project introduces a robust C++ Virtual Machine designed to execute assembly language programs for a simulated artificial machine. The virtual machine is composed of two essential steps, each playing a crucial role in its functionality.
+With the rapid evolution of technology, virtual machines have evolved into pivotal tools with a wide range of applications. This project introduces a robust C++ Virtual Machine designed to execute assembly language programs for a simulated virtual machine. The virtual machine is composed of two essential steps, each playing a crucial role in its functionality.
 
 
 ## Makefile
